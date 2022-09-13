@@ -229,6 +229,7 @@ int main(){
 							endofFile = extractData(filePointer,charitor, feildPosition, "## ", ":");
 							endofFile = extractData(filePointer,charitor, contentPosition, "```", "```");
 							if (endofFile){
+							printf("%s/n",feildName);
 
 							}else if (!strcmp(feildName,"discription") || !strcmp(feildName,"Description") || !strcmp(feildName,"description") ){
 								addingBackslash(contentPosition);
@@ -241,7 +242,6 @@ int main(){
 								addingBackslash(contentPosition);
 								strcat(flag,feildContent);
 								strcat(flag,"\",");
-							}
 							}else if (!strcmp(feildName,"flag") || !strcmp(feildName,"Flag")){
 								removeSpecialChars(contentPosition);
 								addingBackslash(contentPosition);
@@ -268,7 +268,7 @@ int main(){
 							strcat(regex, "static\",");
 						}
 						if (strlen(flag)==11){
-							printf("file Missing Flag");
+							printf("%s, file Missing Flag", readmePath);
 							fclose(filePointer);
   					                closedir(challange);
         						closedir(catagory);
