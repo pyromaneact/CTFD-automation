@@ -229,8 +229,6 @@ int main(){
 							endofFile = extractData(filePointer,charitor, feildPosition, "## ", ":");
 							endofFile = extractData(filePointer,charitor, contentPosition, "```", "```");
 							if (endofFile){
-							printf("%s/n",feildName);
-
 							}else if (!strcmp(feildName,"discription") || !strcmp(feildName,"Description") || !strcmp(feildName,"description") ){
 								addingBackslash(contentPosition);
 								strcat(description, feildContent);
@@ -362,7 +360,22 @@ int main(){
 	}
 	strcat(challanges, "],\"meta\":{}}");
 	strcat(flags, "],\"meta\":{}}");
+
+
+
 	printf("\n\n\n%s\n\n\n\n", challanges);
         printf("\n\n\n%s\n\n\n\n", flags);
+	/**
+	FILE * fileChallange;
+	FILE * fileflags;
+	fileChallange = fopen("challanges.json", 'w');
+	fileChallange = challanges;
+	fclose(fileChallange);
+
+
+	fileflags = fopen("flags.json", 'w');
+        fileflags = flags;
+        fclose(fileflags);
+	**/
 	return 0;
 }
