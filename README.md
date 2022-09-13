@@ -27,17 +27,17 @@ in order for the files to be generated properly each catagory must have its own 
 |   |   |   \README.md
 ```
 ## README.md structure
-each README.md within the challange README.md files is made up of of keys represented by heading 2 size and values contained within code blocks any unreconised keys will be ignored
+each README.md within the challange README.md files is made up of of keys represented by heading 2 size ending with a *:* and values contained within code blocks any unreconised keys will be ignored
 ### table of all keys possible
-| key         | discription                                                               | alternitive key          | required? |
-|-------------|---------------------------------------------------------------------------|--------------------------|-----------|
-| description | the markdown that will be displayed to the user whn opening the challange | Description, discription | Y         |
-| solution    | in current verson ignored and skipped                                     | Solution, soulution      | N         |
-| flag        | the flag that solves the challange (in future to develop regex support)   | Flag                     | Y         |
-| reflag      | the regex for the flag that solves the challange                          | Reflag, REflag           | Y         |
-| points      | the amount of points to be gifted on challange completion default 7       | Points                   | N         |
-| hints       | not implumented yet                                                       | Hints                    | N         |
-| files       | not implumented yet                                                       | Files                    | N         |
+| key          | discription                                                               | alternitive key          | required? |
+|--------------|---------------------------------------------------------------------------|--------------------------|-----------|
+| description: | the markdown that will be displayed to the user whn opening the challange | Description, discription | Y         |
+| solution:    | in current verson ignored and skipped                                     | Solution, soulution      | N         |
+| flag:        | the flag that solves the challange (in future to develop regex support)   | Flag                     | Y         |
+| reflag:      | the regex for the flag that solves the challange                          | Reflag, REflag           | Y         |
+| points:      | the amount of points to be gifted on challange completion default 7       | Points                   | N         |
+| hints:       | not implumented yet                                                       | Hints                    | N         |
+| files:       | not implumented yet                                                       | Files                    | N         |
 
 **flag XOR reflag is needed not both **
 
