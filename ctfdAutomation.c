@@ -247,6 +247,7 @@ int main(){
 								strcat(flag,"\",");
        		                			}else if (!strcmp(feildName,"points") || !strcmp(feildName,"Points")){
 								removeSpecialChars(contentPosition);
+								removeSpecialChars(contentPosition);
 								strcat(points,contentPosition);
 								strcat(points,",");
 
