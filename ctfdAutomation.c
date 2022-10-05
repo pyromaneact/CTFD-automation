@@ -195,7 +195,7 @@ int main(){
 
 						//flag data strings
 						char regex[20]= "\"type\":\"";
-						char flag[50]= "\"content\":\"";
+						char flag[58]= "\"content\":\"";
 						char caseSensitivity[30]= "\"data\":\"";
 
 						//challange data strings
@@ -231,6 +231,14 @@ int main(){
 							if (endofFile){
 							}else if (!strcmp(feildName,"discription") || !strcmp(feildName,"Description") || !strcmp(feildName,"description") ){
 								addingBackslash(contentPosition);
+								long newlength=strlen(description)+strlen(feildContent)+3;
+								if (newlength>900){
+									printf("discription limit reached, %ld > 900", newlength);
+									fclose(filePointer);
+                                                        		closedir(challange);
+                                                        		closedir(catagory);
+                                                        		return 1;
+								}
 								strcat(description, feildContent);
 								strcat(description, "\",");
 							}else if (!strcmp(feildName,"soulution") || !strcmp(feildName,"Solution") || !strcmp(feildName,"solution")){
@@ -238,16 +246,45 @@ int main(){
 								strcat(regex, "regex\",");
 								removeSpecialChars(contentPosition);
 								addingBackslash(contentPosition);
+
+								long newlength=strlen(flag)+strlen(feildContent)+3;
+								if (newlength>58){
+                                                                        printf("flag limit reached, %ld > 58", newlength);
+                                                                        fclose(filePointer);
+                                                                        closedir(challange);
+                                                                        closedir(catagory);
+                                                                        return 1;
+                                                                }
+
 								strcat(flag,feildContent);
 								strcat(flag,"\",");
+
 							}else if (!strcmp(feildName,"flag") || !strcmp(feildName,"Flag")){
 								removeSpecialChars(contentPosition);
 								addingBackslash(contentPosition);
+
+								long newlength=strlen(flag)+strlen(feildContent)+3;
+								if (newlength>58){
+                                                                        printf("flag limit reached, %ld > 58", newlength);
+                                                                        fclose(filePointer);
+                                                                        closedir(challange);
+                                                                        closedir(catagory);
+                                                                        return 1;
+                                                                }
+
 								strcat(flag,feildContent);
 								strcat(flag,"\",");
        		                			}else if (!strcmp(feildName,"points") || !strcmp(feildName,"Points")){
 								removeSpecialChars(contentPosition);
 								removeSpecialChars(contentPosition);
+								long newlength=strlen(points)+strlen(feildContent)+2;
+								if (newlength>15){
+                                                                        printf("points limit reached, %ld > 50", newlength);
+                                                                        fclose(filePointer);
+                                                                        closedir(challange);
+                                                                        closedir(catagory);
+                                                                        return 1;
+                                                                }
 								strcat(points,contentPosition);
 								strcat(points,",");
 
@@ -273,8 +310,6 @@ int main(){
         						closedir(catagory);
 							return 1;
 						}
-
-
 
 						if ( strlen(description)==15){
 							printf("youve missed a discription buddy");
@@ -310,9 +345,26 @@ int main(){
 
 
 						//make challange and flag strings for hte challange
+						long flagLength=strlen(flaginfo)+strlen(regex)+strlen(flag)+strlen(caseSensitivity);
+						if (flagLength>1000){
+                                                	printf("flag challange limit reached, %ld > 1000", flagLength);
+                                                        fclose(filePointer);
+                                                        closedir(challange);
+                                                        closedir(catagory);
+                                                        return 1;
+                                                }
 						strcat(flaginfo,regex);
                 				strcat(flaginfo,flag);
                 				strcat(flaginfo,caseSensitivity);
+
+						long challangeLength=strlen(chalangeinfo)+strlen(description)+strlen(maxAttempts)+strlen(points)+strlen(category)+strlen(type)+strlen(state)+strlen(requirements)+strlen(connection)+strlen(nextId);
+                                                if (challangeLength>9000){
+                                                        printf("challange limit reached, %ld > 9000", challangeLength);
+                                                        fclose(filePointer);
+                                                        closedir(challange);
+                                                        closedir(catagory);
+                                                        return 1;
+                                                }
 
 						strcat(chalangeinfo,description);
 						strcat(chalangeinfo,maxAttempts);
@@ -324,7 +376,23 @@ int main(){
                 				strcat(chalangeinfo,connection);
 						strcat(chalangeinfo,nextId);
 
+						long challangeFile=strlen(challanges)+strlen(chalangeinfo);
+						if (challangeFile>500000){
+                                                        printf("challange file limit reached, %ld > 500000", challangeFile);
+                                                        fclose(filePointer);
+                                                        closedir(challange);
+                                                        closedir(catagory);
+                                                        return 1;
+                                                }
 						strcat(challanges,chalangeinfo);
+						long flagFile=strlen(flags)+strlen(flaginfo);
+                                                if (flagFile>100000){
+                                                        printf("flag file limit reached, %ld > 100000", flagFile);
+                                                        fclose(filePointer);
+                                                        closedir(challange);
+                                                        closedir(catagory);
+                                                        return 1;
+                                                }
         					strcat(flags,flaginfo);
 						agin=1;
 					}
